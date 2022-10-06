@@ -9,6 +9,7 @@ import com.sparta.homework.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -29,6 +30,10 @@ public class PostController {
         return postRepository.findAllByOrderByModifiedAtDesc();
     }
     @GetMapping("/api/posts/{id}")
+    public Post findPost(@PathVariable Long id) {
+        return postService.showOnePost(id);
+
+    }
 
     @DeleteMapping("/api/posts/{id}")
     public Long deletePost(@PathVariable Long id) {

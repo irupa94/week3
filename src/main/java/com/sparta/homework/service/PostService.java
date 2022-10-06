@@ -23,6 +23,10 @@ public class PostService {
 
         post.update(requestDto);
         return post.getId();
-
+    }
+    @Transactional
+    public Post showOnePost(Long id) {
+        Post post = postRepository.findById(id).get();
+        return post;
     }
 }

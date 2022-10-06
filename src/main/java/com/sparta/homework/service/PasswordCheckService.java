@@ -19,7 +19,6 @@ public class PasswordCheckService {
     public Long check(Long id,PasswordRequestDto pwDto) {
         Optional<Post> optional = postRepository.findById(id);
         Post post = optional.get();
-        String realpassword = post.getPassword();
         if (post.check(pwDto)==true) {
                 System.out.println("비밀번호가 일치합니다.");
             } else {

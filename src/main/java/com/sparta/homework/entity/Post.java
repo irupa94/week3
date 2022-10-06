@@ -1,5 +1,6 @@
 package com.sparta.homework.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sparta.homework.dto.PasswordRequestDto;
 import com.sparta.homework.dto.PostRequestDto;
 import lombok.Getter;
@@ -23,7 +24,7 @@ public class Post extends Timestamped { // 생성,수정 시간을 자동으로 
 
     @Column(nullable = false)
     private String post;
-    //@JsonIgnore // password 안보이게 하는 어노테이션
+    @JsonIgnore // password 안보이게 하는 어노테이션
     @Column(nullable = false)
     private String password;
 
@@ -46,11 +47,13 @@ public class Post extends Timestamped { // 생성,수정 시간을 자동으로 
         this.post = requestDto.getPost();
         this.password = requestDto.getPassword();
     }
+
     public boolean check(PasswordRequestDto pwDto) {
         if(this.password.equals(pwDto.getPassword())){
          return true;
         }else return false;
 
     }
+
 
 }
